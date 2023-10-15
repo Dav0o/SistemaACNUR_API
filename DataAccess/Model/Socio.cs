@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProyectoACNUR_API.Model;
+namespace DataAccess.Model;
 
 public partial class Socio
 {
     public int IdSocio { get; set; }
 
     public int CuentaBanco { get; set; }
-
-    public DateTime FechaPago { get; set; }
 
     public int UsuarioDni { get; set; }
 

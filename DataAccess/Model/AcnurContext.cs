@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using ProyectoACNUR_API.Model;
 
 namespace DataAccess.Model;
 
@@ -62,13 +61,13 @@ public partial class AcnurContext : DbContext
 
     public virtual DbSet<VoluntarioSanitario> VoluntarioSanitarios { get; set; }
 
- 
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Alimento>(entity =>
         {
-            entity.HasKey(e => e.IdAlimento).HasName("PK__Alimento__22E89F9D03E01C5B");
+            entity.HasKey(e => e.IdAlimento).HasName("PK__Alimento__22E89F9D5830465E");
 
             entity.ToTable("Alimento");
 
@@ -85,7 +84,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Almacen>(entity =>
         {
-            entity.HasKey(e => e.IdAlmacen).HasName("PK__Almacen__1E9C729E3F8CA617");
+            entity.HasKey(e => e.IdAlmacen).HasName("PK__Almacen__1E9C729E2978E525");
 
             entity.ToTable("Almacen");
 
@@ -107,33 +106,36 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Sede).WithMany(p => p.Almacens)
                 .HasForeignKey(d => d.SedeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Almacen__Sede_Id__74AE54BC");
+                .HasConstraintName("FK__Almacen__Sede_Id__628FA481");
         });
 
         modelBuilder.Entity<CuotaSocio>(entity =>
         {
-            entity.HasKey(e => e.IdCuotaSocio).HasName("PK__Cuota_So__402DA5C03410CAE4");
+            entity.HasKey(e => e.IdCuotaSocio).HasName("PK__Cuota_So__402DA5C098FB0680");
 
             entity.ToTable("Cuota_Socio");
 
             entity.Property(e => e.IdCuotaSocio).HasColumnName("Id_Cuota_Socio");
             entity.Property(e => e.CuotaId).HasColumnName("Cuota_Id");
+            entity.Property(e => e.FechaPago)
+                .HasColumnType("date")
+                .HasColumnName("Fecha_Pago");
             entity.Property(e => e.SocioId).HasColumnName("Socio_Id");
 
             entity.HasOne(d => d.Cuota).WithMany(p => p.CuotaSocios)
                 .HasForeignKey(d => d.CuotaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cuota_Soc__Cuota__59FA5E80");
+                .HasConstraintName("FK__Cuota_Soc__Cuota__47DBAE45");
 
             entity.HasOne(d => d.Socio).WithMany(p => p.CuotaSocios)
                 .HasForeignKey(d => d.SocioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Cuota_Soc__Socio__5AEE82B9");
+                .HasConstraintName("FK__Cuota_Soc__Socio__48CFD27E");
         });
 
         modelBuilder.Entity<Cuotum>(entity =>
         {
-            entity.HasKey(e => e.IdCuota).HasName("PK__Cuota__AE25C03F7462282B");
+            entity.HasKey(e => e.IdCuota).HasName("PK__Cuota__AE25C03F8570703E");
 
             entity.Property(e => e.IdCuota)
                 .ValueGeneratedNever()
@@ -149,7 +151,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Direccion>(entity =>
         {
-            entity.HasKey(e => e.IdDireccion).HasName("PK__Direccio__535FD61191316A6A");
+            entity.HasKey(e => e.IdDireccion).HasName("PK__Direccio__535FD61199D35B85");
 
             entity.ToTable("Direccion");
 
@@ -173,7 +175,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Envio>(entity =>
         {
-            entity.HasKey(e => e.IdEnvio).HasName("PK__Envio__3A838833B6FCD522");
+            entity.HasKey(e => e.IdEnvio).HasName("PK__Envio__3A838833028F2F8B");
 
             entity.ToTable("Envio");
 
@@ -196,12 +198,12 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.UnidadMedida).WithMany(p => p.Envios)
                 .HasForeignKey(d => d.UnidadMedidaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio__UnidadMed__6A30C649");
+                .HasConstraintName("FK__Envio__UnidadMed__5812160E");
         });
 
         modelBuilder.Entity<EnvioAlimento>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioAlimento).HasName("PK__Envio_Al__69563786FE8E0CBA");
+            entity.HasKey(e => e.IdEnvioAlimento).HasName("PK__Envio_Al__695637860E4D1377");
 
             entity.ToTable("Envio_Alimento");
 
@@ -216,17 +218,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Alimento).WithMany(p => p.EnvioAlimentos)
                 .HasForeignKey(d => d.AlimentoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Ali__Alime__02FC7413");
+                .HasConstraintName("FK__Envio_Ali__Alime__70DDC3D8");
 
             entity.HasOne(d => d.Envio).WithMany(p => p.EnvioAlimentos)
                 .HasForeignKey(d => d.EnvioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Ali__Envio__03F0984C");
+                .HasConstraintName("FK__Envio_Ali__Envio__71D1E811");
         });
 
         modelBuilder.Entity<EnvioHumanitario>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioHumanitario).HasName("PK__Envio_Hu__D0CE3969A8992CE9");
+            entity.HasKey(e => e.IdEnvioHumanitario).HasName("PK__Envio_Hu__D0CE39697BEAF8C2");
 
             entity.ToTable("Envio_Humanitario");
 
@@ -237,17 +239,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Envio).WithMany(p => p.EnvioHumanitarios)
                 .HasForeignKey(d => d.EnvioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Hum__Envio__71D1E811");
+                .HasConstraintName("FK__Envio_Hum__Envio__5FB337D6");
 
             entity.HasOne(d => d.VoluntarioSanitario).WithMany(p => p.EnvioHumanitarios)
                 .HasForeignKey(d => d.VoluntarioSanitarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Hum__Volun__70DDC3D8");
+                .HasConstraintName("FK__Envio_Hum__Volun__5EBF139D");
         });
 
         modelBuilder.Entity<EnvioMedicina>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioMedicina).HasName("PK__Envio_Me__8C15B779DCB8A6E4");
+            entity.HasKey(e => e.IdEnvioMedicina).HasName("PK__Envio_Me__8C15B7793150C899");
 
             entity.ToTable("Envio_Medicina");
 
@@ -262,17 +264,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Envio).WithMany(p => p.EnvioMedicinas)
                 .HasForeignKey(d => d.EnvioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Med__Envio__07C12930");
+                .HasConstraintName("FK__Envio_Med__Envio__75A278F5");
 
             entity.HasOne(d => d.Medicina).WithMany(p => p.EnvioMedicinas)
                 .HasForeignKey(d => d.MedicinaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Med__Medic__06CD04F7");
+                .HasConstraintName("FK__Envio_Med__Medic__74AE54BC");
         });
 
         modelBuilder.Entity<EnvioSede>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioSede).HasName("PK__Envio_Se__E4F154D63FDE1641");
+            entity.HasKey(e => e.IdEnvioSede).HasName("PK__Envio_Se__E4F154D61C586A49");
 
             entity.ToTable("Envio_Sede");
 
@@ -286,17 +288,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Envio).WithMany(p => p.EnvioSedes)
                 .HasForeignKey(d => d.EnvioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Sed__Envio__6E01572D");
+                .HasConstraintName("FK__Envio_Sed__Envio__5BE2A6F2");
 
             entity.HasOne(d => d.Sede).WithMany(p => p.EnvioSedes)
                 .HasForeignKey(d => d.SedeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Envio_Sed__Sede___6D0D32F4");
+                .HasConstraintName("FK__Envio_Sed__Sede___5AEE82B9");
         });
 
         modelBuilder.Entity<InventarioAlimento>(entity =>
         {
-            entity.HasKey(e => e.IdInventarioAlimento).HasName("PK__Inventar__298C09337877FF0A");
+            entity.HasKey(e => e.IdInventarioAlimento).HasName("PK__Inventar__298C093300261F44");
 
             entity.ToTable("Inventario_Alimento");
 
@@ -313,17 +315,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Alimento).WithMany(p => p.InventarioAlimentos)
                 .HasForeignKey(d => d.AlimentoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Inventari__Alime__7B5B524B");
+                .HasConstraintName("FK__Inventari__Alime__693CA210");
 
             entity.HasOne(d => d.Almacen).WithMany(p => p.InventarioAlimentos)
                 .HasForeignKey(d => d.AlmacenId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Inventari__Almac__7C4F7684");
+                .HasConstraintName("FK__Inventari__Almac__6A30C649");
         });
 
         modelBuilder.Entity<InventarioMedicina>(entity =>
         {
-            entity.HasKey(e => e.IdInventarioMedicina).HasName("PK__Inventar__49248191AF1622C5");
+            entity.HasKey(e => e.IdInventarioMedicina).HasName("PK__Inventar__492481912C35376A");
 
             entity.ToTable("Inventario_Medicina");
 
@@ -340,17 +342,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Almacen).WithMany(p => p.InventarioMedicinas)
                 .HasForeignKey(d => d.AlmacenId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Inventari__Almac__00200768");
+                .HasConstraintName("FK__Inventari__Almac__6E01572D");
 
             entity.HasOne(d => d.Medicina).WithMany(p => p.InventarioMedicinas)
                 .HasForeignKey(d => d.MedicinaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Inventari__Medic__7F2BE32F");
+                .HasConstraintName("FK__Inventari__Medic__6D0D32F4");
         });
 
         modelBuilder.Entity<Medicina>(entity =>
         {
-            entity.HasKey(e => e.IdMedicina).HasName("PK__Medicina__D4176A77B5C8859C");
+            entity.HasKey(e => e.IdMedicina).HasName("PK__Medicina__D4176A7714E6A33C");
 
             entity.ToTable("Medicina");
 
@@ -366,7 +368,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Profesion>(entity =>
         {
-            entity.HasKey(e => e.IdProfesion).HasName("PK__Profesio__1632DD8AE04649D1");
+            entity.HasKey(e => e.IdProfesion).HasName("PK__Profesio__1632DD8A148DBADE");
 
             entity.ToTable("Profesion");
 
@@ -381,7 +383,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<ProfesionVoluntario>(entity =>
         {
-            entity.HasKey(e => e.IdProfesionVoluntario).HasName("PK__Profesio__AA37818BFEF35805");
+            entity.HasKey(e => e.IdProfesionVoluntario).HasName("PK__Profesio__AA37818B62D82B49");
 
             entity.ToTable("Profesion_Voluntario");
 
@@ -395,17 +397,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Profesion).WithMany(p => p.ProfesionVoluntarios)
                 .HasForeignKey(d => d.ProfesionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Profesion__Profe__6383C8BA");
+                .HasConstraintName("FK__Profesion__Profe__5165187F");
 
             entity.HasOne(d => d.VoluntarioSanitario).WithMany(p => p.ProfesionVoluntarios)
                 .HasForeignKey(d => d.VoluntarioSanitarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Profesion__Volun__628FA481");
+                .HasConstraintName("FK__Profesion__Volun__5070F446");
         });
 
         modelBuilder.Entity<Rol>(entity =>
         {
-            entity.HasKey(e => e.IdRol).HasName("PK__Rol__55932E86E57DF760");
+            entity.HasKey(e => e.IdRol).HasName("PK__Rol__55932E8682CDD013");
 
             entity.ToTable("Rol");
 
@@ -423,7 +425,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Sede>(entity =>
         {
-            entity.HasKey(e => e.IdSede).HasName("PK__Sede__A3F9F16A78167878");
+            entity.HasKey(e => e.IdSede).HasName("PK__Sede__A3F9F16A33E536FA");
 
             entity.ToTable("Sede");
 
@@ -435,13 +437,12 @@ public partial class AcnurContext : DbContext
 
             entity.HasOne(d => d.Direccion).WithMany(p => p.Sedes)
                 .HasForeignKey(d => d.DireccionId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Sede_Direccion");
         });
 
         modelBuilder.Entity<Socio>(entity =>
         {
-            entity.HasKey(e => e.IdSocio).HasName("PK__Socio__8CB15183D79B2F7F");
+            entity.HasKey(e => e.IdSocio).HasName("PK__Socio__8CB15183D57259D7");
 
             entity.ToTable("Socio");
 
@@ -450,25 +451,22 @@ public partial class AcnurContext : DbContext
                 .HasColumnName("Id_Socio");
             entity.Property(e => e.CuentaBanco).HasColumnName("Cuenta_Banco");
             entity.Property(e => e.CuotaId).HasColumnName("Cuota_Id");
-            entity.Property(e => e.FechaPago)
-                .HasColumnType("date")
-                .HasColumnName("Fecha_Pago");
             entity.Property(e => e.UsuarioDni).HasColumnName("Usuario_Dni");
 
             entity.HasOne(d => d.Cuota).WithMany(p => p.Socios)
                 .HasForeignKey(d => d.CuotaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Socio__Cuota_Id__571DF1D5");
+                .HasConstraintName("FK__Socio__Cuota_Id__44FF419A");
 
             entity.HasOne(d => d.UsuarioDniNavigation).WithMany(p => p.Socios)
                 .HasForeignKey(d => d.UsuarioDni)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Socio__Usuario_D__5629CD9C");
+                .HasConstraintName("FK__Socio__Usuario_D__440B1D61");
         });
 
         modelBuilder.Entity<UnidadMedidum>(entity =>
         {
-            entity.HasKey(e => e.IdUnidadMedida).HasName("PK__UnidadMe__5BD46EDDB1A23CF1");
+            entity.HasKey(e => e.IdUnidadMedida).HasName("PK__UnidadMe__5BD46EDD38B5BB47");
 
             entity.Property(e => e.IdUnidadMedida)
                 .HasMaxLength(6)
@@ -481,7 +479,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.DniUsuario).HasName("PK__Usuario__25A9C8D80EB71F2B");
+            entity.HasKey(e => e.DniUsuario).HasName("PK__Usuario__25A9C8D8DE828C07");
 
             entity.ToTable("Usuario");
 
@@ -517,7 +515,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<UsuarioRol>(entity =>
         {
-            entity.HasKey(e => e.IdUsuarioRol).HasName("PK__Usuario___1BAC97A7FDE44638");
+            entity.HasKey(e => e.IdUsuarioRol).HasName("PK__Usuario___1BAC97A7291E7323");
 
             entity.ToTable("Usuario_Rol");
 
@@ -531,17 +529,17 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.Rol).WithMany(p => p.UsuarioRols)
                 .HasForeignKey(d => d.RolId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Usuario_R__Rol_I__4E88ABD4");
+                .HasConstraintName("FK__Usuario_R__Rol_I__3C69FB99");
 
             entity.HasOne(d => d.UsuarioDniNavigation).WithMany(p => p.UsuarioRols)
                 .HasForeignKey(d => d.UsuarioDni)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Usuario_R__Usuar__4D94879B");
+                .HasConstraintName("FK__Usuario_R__Usuar__3B75D760");
         });
 
         modelBuilder.Entity<VoluntarioAdministrador>(entity =>
         {
-            entity.HasKey(e => e.IdVoluntarioAdministrador).HasName("PK__Voluntar__41D71E7944F12245");
+            entity.HasKey(e => e.IdVoluntarioAdministrador).HasName("PK__Voluntar__41D71E791967A4A1");
 
             entity.ToTable("Voluntario_Administrador");
 
@@ -553,12 +551,12 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.UsuarioDniNavigation).WithMany(p => p.VoluntarioAdministradors)
                 .HasForeignKey(d => d.UsuarioDni)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Voluntari__Usuar__5165187F");
+                .HasConstraintName("FK__Voluntari__Usuar__3F466844");
         });
 
         modelBuilder.Entity<VoluntarioSanitario>(entity =>
         {
-            entity.HasKey(e => e.IdVoluntarioSanitario).HasName("PK__Voluntar__380A198C5F3AA7DE");
+            entity.HasKey(e => e.IdVoluntarioSanitario).HasName("PK__Voluntar__380A198C29AC2DEE");
 
             entity.ToTable("Voluntario_Sanitario");
 
@@ -570,7 +568,7 @@ public partial class AcnurContext : DbContext
             entity.HasOne(d => d.UsuarioDniNavigation).WithMany(p => p.VoluntarioSanitarios)
                 .HasForeignKey(d => d.UsuarioDni)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Voluntari__Usuar__5DCAEF64");
+                .HasConstraintName("FK__Voluntari__Usuar__4BAC3F29");
         });
 
         OnModelCreatingPartial(modelBuilder);

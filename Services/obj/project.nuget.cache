@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M+GBkkYihVLOHTAKkhtTbYSBXUXtOjQkN84B41y0jHPIKwCSFEnwsFf26o+qpK3i++pJkeSe0NOnaFcLSdjeow==",
+  "dgSpecHash": "enPqmXrmmE4/Zv3jvh1gZZwEbQgtkWGQPer/Ia5F/9tMb8k3Cu51+UdJWSonMW7Ns4Ds3FmGsMzzpAiO9yo2XA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\Code\\ProyectoACNUR_API\\Services\\Services.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\Code\\SistemaACNUR_API\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

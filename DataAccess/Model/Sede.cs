@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProyectoACNUR_API.Model;
+namespace DataAccess.Model;
 
 public partial class Sede
 {
     public string IdSede { get; set; } = null!;
 
-    public int DireccionId { get; set; }
+    public int? DireccionId { get; set; }
 
     public virtual ICollection<Almacen> Almacens { get; set; } = new List<Almacen>();
 
-    public virtual Direccion Direccion { get; set; } = null!;
+    public virtual Direccion? Direccion { get; set; }
 
     public virtual ICollection<EnvioSede> EnvioSedes { get; set; } = new List<EnvioSede>();
 

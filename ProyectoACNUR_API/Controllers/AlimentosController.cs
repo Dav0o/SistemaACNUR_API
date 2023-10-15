@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DataAccess.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using ProyectoACNUR_API.Model;
+
 using Services.Services.IServices;
 using static Services.Extension.DtoMapping;
 

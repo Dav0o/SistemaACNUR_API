@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProyectoACNUR_API.Model;
+namespace DataAccess.Model;
 
 public partial class Alimento
 {

@@ -2,7 +2,7 @@
 using DataAccess.Model;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using ProyectoACNUR_API.Model;
+
 using Services.Services.IServices;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,7 @@ using DataAccess;
 using Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using ProyectoACNUR_API.Model;
+using DataAccess.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 

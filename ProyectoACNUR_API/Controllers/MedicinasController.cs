@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProyectoACNUR_API.Model;
+using DataAccess.Model;
 using Services.Services.IServices;
 
 namespace ProyectoACNUR_API.Controllers

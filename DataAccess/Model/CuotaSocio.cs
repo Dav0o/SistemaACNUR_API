@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProyectoACNUR_API.Model;
+namespace DataAccess.Model;
 
 public partial class CuotaSocio
 {
@@ -10,6 +10,8 @@ public partial class CuotaSocio
     public int CuotaId { get; set; }
 
     public int SocioId { get; set; }
+
+    public DateTime FechaPago { get; set; }
 
     public virtual Cuotum Cuota { get; set; } = null!;
 

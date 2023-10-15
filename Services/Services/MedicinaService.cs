@@ -1,6 +1,5 @@
 ﻿using DataAccess.Model;
 using Microsoft.EntityFrameworkCore;
-using ProyectoACNUR_API.Model;
 using Services.Extension;
 using Services.Services.IServices;
 using System;
