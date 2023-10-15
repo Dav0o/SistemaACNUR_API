@@ -1,4 +1,5 @@
 ﻿using DataAccess.Model;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Services.Extension;
 using Services.Services.IServices;
@@ -25,14 +26,23 @@ namespace Services.Services
                 .FromSqlRaw<Medicina>("SP_Listar_Medicinas")
                 .ToListAsync();
         }
-        public Task<int> Add(DtoMedicina medicina)
+        public async Task<int> Add(DtoMedicina medicina)
         {
-            throw new NotImplementedException();
+            var parameter = new List<SqlParameter>();
+            parameter.Add(new SqlParameter("@EsId_Medicina", medicina.IdMedicina));
+            parameter.Add(new SqlParameter("@EsNombreMedicina", medicina.NombreMedicina));
+            parameter.Add(new SqlParameter("@EsFechaVencimiento", medicina.FechaVencimiento));
+            
+
+            var result = await Task.Run(() => _context.Database
+           .ExecuteSqlRawAsync(@"exec SP_Insertar_Medicina @EsId_Medicina, @EsNombreMedicina, @EsFechaVencimiento",
+                               parameter.ToArray()));
+            return result;
         }
 
-        public Task<int> Delete(string Id)
+        public async Task<int> Delete(string Id)
         {
-            throw new NotImplementedException();
+            return await Task.Run(() => _context.Database.ExecuteSqlInterpolatedAsync($"SP_Eliminar_Medicina {Id}"));
         }
 
         public Task<IEnumerable<Medicina>> GetById(string Id)
@@ -40,9 +50,17 @@ namespace Services.Services
             throw new NotImplementedException();
         }
 
-        public Task<int> Update(DtoMapping.DtoMedicina medicina)
+        public async Task<int> Update(DtoMapping.DtoMedicina medicina)
         {
-            throw new NotImplementedException();
+            var parameter = new List<SqlParameter>();
+            parameter.Add(new SqlParameter("@EsId_Medicina", medicina.IdMedicina));
+            parameter.Add(new SqlParameter("@EsNombreMedicina", medicina.NombreMedicina));
+            parameter.Add(new SqlParameter("@EsFechaVencimiento", medicina.FechaVencimiento));
+
+            var result = await Task.Run(() => _context.Database
+           .ExecuteSqlRawAsync(@"exec SP_Actualizar_Medicina @EsId_Medicina, @EsNombreMedicina, @EsFechaVencimiento",
+                               parameter.ToArray()));
+            return result;
         }
     }
 }
