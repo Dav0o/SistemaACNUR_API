@@ -17,6 +17,13 @@ namespace Services
 
             services.AddScoped<IAlimentoService, AlimentoService>();
             services.AddScoped<IMedicinaService, MedicinaService>();
+            services.AddScoped<IAlmacenService, AlmacenService>();
+            services.AddScoped<IInventarioAlimentoService, InventarioAlimentoService>();
+            services.AddScoped<IEnvioService, EnvioService>();
+            services.AddScoped<IInventarioMedicinaService, InventarioMedicinaService>();
+            services.AddScoped<ISedeService, SedeService>();
+            services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
+            services.AddScoped<IUsuarioService, UsuarioService>();
 
             return services;
         }
