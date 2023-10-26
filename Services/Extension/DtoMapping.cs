@@ -70,7 +70,7 @@
 
         #endregion
 
-        #region
+        #region InventarioMedicina 
         public struct DtoInventarioMedicina
         {
             public int IdInventarioMedicina { get; set; }
@@ -82,7 +82,7 @@
         }
         #endregion
 
-        #region
+        #region Sede
         public struct DtoSede
         {
             public string IdSede { get; set; }
@@ -91,7 +91,7 @@
         }
         #endregion
 
-        #region
+        #region UnidadMedida
         public struct DtoUnidadMedida
         {
             public string IdUnidadMedida { get; set; } 
@@ -100,7 +100,7 @@
         }
         #endregion
 
-        #region
+        #region Usuario
         public struct DtoUsuario
         {
             public int DniUsuario { get; set; }
@@ -122,6 +122,91 @@
             public string SedeId { get; set; } 
         }
         #endregion
+
+        #region Direccion
+        public struct DtoDireccion
+        {
+            public int IdDireccion { get; set; }
+
+            public string Pais { get; set; } 
+
+            public string Ciudad { get; set; }
+
+            public string Estado { get; set; } 
+
+            public string DireccionExacta { get; set; }
+
+        }
+        #endregion
+
+        #region Rol
+        public struct DtoRol
+        {
+            public string IdRol { get; set; } 
+
+            public string NombreRol { get; set; }
+
+            public string DescripcionRol { get; set; } 
+
+
+        }
+        #endregion
+
+        #region UsuarioRol
+        public struct DtoUsuarioRol
+        {
+            public int IdUsuarioRol { get; set; }
+
+            public int UsuarioDni { get; set; }
+
+            public string RolId { get; set; } 
+
+
+        }
+        #endregion
+
+        #region Profesion
+        public struct DtoProfesion
+        {
+            public string IdProfesion { get; set; }
+
+            public string NombreProfesion { get; set; } 
+
+
+        }
+        #endregion
+
+        #region Socio
+        public struct DtoSocio
+        {
+            public int IdSocio { get; set; }
+
+            public int CuentaBanco { get; set; }
+
+            public int UsuarioDni { get; set; }
+
+            public int CuotaId { get; set; }
+
+
+        }
+        #endregion
+
+        #region Cuota
+        public struct DtoCuota
+        {
+            public int IdCuota { get; set; }
+
+            public decimal CargosAnuales { get; set; }
+
+            public string TipoCuota { get; set; } 
+
+
+        }
+        #endregion
+
+
+
+
     }
 
 

@@ -24,7 +24,12 @@ namespace Services
             services.AddScoped<ISedeService, SedeService>();
             services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
             services.AddScoped<IUsuarioService, UsuarioService>();
-
+            services.AddScoped<IDireccionService, DireccionService>();
+            services.AddScoped<IRolService, RolService>();  
+            services.AddScoped<IUsuarioRolService, UsuarioRolService> ();
+            services.AddScoped<IProfesionService, ProfesionService>();
+            services.AddScoped<ICuotaService, CuotaService>();
+            services.AddScoped<ISocioService, SocioService>();
             return services;
         }
     }
