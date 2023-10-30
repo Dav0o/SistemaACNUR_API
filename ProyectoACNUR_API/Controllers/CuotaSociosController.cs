@@ -8,17 +8,17 @@ namespace ProyectoACNUR_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioRolsController : ControllerBase
+    public class CuotaSociosController : ControllerBase
     {
-        private readonly IUsuarioRolService _service;
+        private readonly ICuotaSocioService _service;
 
-        public UsuarioRolsController(IUsuarioRolService service)
+        public CuotaSociosController(ICuotaSocioService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public async Task<List<UsuarioRol>> Get()
+        public async Task<List<CuotaSocio>> Get()
         {
             try
             {
@@ -30,10 +30,9 @@ namespace ProyectoACNUR_API.Controllers
             }
         }
 
-      
 
         [HttpPost]
-        public async Task<IActionResult> Add(DtoUsuarioRol request)
+        public async Task<IActionResult> Add(DtoCuotaSocio request)
         {
 
 
@@ -42,21 +41,6 @@ namespace ProyectoACNUR_API.Controllers
                 var response = await _service.Add(request);
 
                 return Ok(response);
-            }
-            catch
-            {
-                throw;
-            }
-        }
- 
-
-        [HttpDelete]
-        public async Task<int> Delete(int usuarioDni, string rolId)
-        {
-            try
-            {
-                var response = await _service.Delete(usuarioDni, rolId);
-                return response;
             }
             catch
             {

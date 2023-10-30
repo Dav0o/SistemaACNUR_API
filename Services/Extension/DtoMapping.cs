@@ -176,6 +176,18 @@
         }
         #endregion
 
+        #region ProfesionVoluntario
+        public struct DtoProfesionVoluntario
+        {
+            public int IdProfesionVoluntario { get; set; }
+
+            public int VoluntarioSanitarioId { get; set; }
+
+            public string ProfesionId { get; set; }
+
+        }
+        #endregion
+
         #region Socio
         public struct DtoSocio
         {
@@ -204,9 +216,44 @@
         }
         #endregion
 
+        #region CuotaSocio
+        public struct DtoCuotaSocio
+        {
+            public int IdCuotaSocio { get; set; }
+
+            public int CuotaId { get; set; }
+
+            public int SocioId { get; set; }
+
+            public DateTime FechaPago { get; set; }
+
+        }
+        #endregion
+
+        #region VoluntarioAdministrador
+        public struct DtoVoluntarioAdministrador
+        {
+            public int IdVoluntarioAdministrador { get; set; }
+
+            public int UsuarioDni { get; set; }
 
 
+        }
+        #endregion
 
+        #region VoluntarioSanitario
+        public struct DtoVoluntarioSanitario
+        {
+            public int IdVoluntarioSanitario { get; set; }
+
+            public bool Disponible { get; set; }
+
+            public int UsuarioDni { get; set; }
+
+
+        }
+        #endregion
+       
     }
 
 
