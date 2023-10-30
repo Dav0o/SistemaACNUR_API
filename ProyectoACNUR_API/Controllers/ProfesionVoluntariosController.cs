@@ -8,17 +8,17 @@ namespace ProyectoACNUR_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioRolsController : ControllerBase
+    public class ProfesionVoluntariosController : ControllerBase
     {
-        private readonly IUsuarioRolService _service;
+        private readonly IProfesionVoluntarioService _service;
 
-        public UsuarioRolsController(IUsuarioRolService service)
+        public ProfesionVoluntariosController(IProfesionVoluntarioService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public async Task<List<UsuarioRol>> Get()
+        public async Task<List<ProfesionVoluntario>> Get()
         {
             try
             {
@@ -30,10 +30,10 @@ namespace ProyectoACNUR_API.Controllers
             }
         }
 
-      
+
 
         [HttpPost]
-        public async Task<IActionResult> Add(DtoUsuarioRol request)
+        public async Task<IActionResult> Add(DtoProfesionVoluntario request)
         {
 
 
@@ -48,14 +48,14 @@ namespace ProyectoACNUR_API.Controllers
                 throw;
             }
         }
- 
+
 
         [HttpDelete]
-        public async Task<int> Delete(int usuarioDni, string rolId)
+        public async Task<int> Delete(int VoluntarioSanitarioId, string ProfesionId)
         {
             try
             {
-                var response = await _service.Delete(usuarioDni, rolId);
+                var response = await _service.Delete(VoluntarioSanitarioId, ProfesionId);
                 return response;
             }
             catch

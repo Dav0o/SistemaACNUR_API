@@ -48,7 +48,7 @@ namespace Services.Services
         public async Task<int> Update(DtoSocio socio)
         {
             var parameter = new List<SqlParameter>();
-            parameter.Add(new SqlParameter(" @EsId_Socio", socio.IdSocio));
+            parameter.Add(new SqlParameter("@EsId_Socio", socio.IdSocio));
             parameter.Add(new SqlParameter("@EsCuenta_Banco", socio.CuentaBanco));
             parameter.Add(new SqlParameter("@EsUsuarioDni", socio.UsuarioDni));
             parameter.Add(new SqlParameter("@EsCuota_Id", socio.CuotaId));

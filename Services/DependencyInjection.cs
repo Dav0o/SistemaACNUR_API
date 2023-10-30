@@ -28,8 +28,13 @@ namespace Services
             services.AddScoped<IRolService, RolService>();  
             services.AddScoped<IUsuarioRolService, UsuarioRolService> ();
             services.AddScoped<IProfesionService, ProfesionService>();
+            services.AddScoped<IProfesionVoluntarioService, ProfesionVoluntarioService>();
             services.AddScoped<ICuotaService, CuotaService>();
             services.AddScoped<ISocioService, SocioService>();
+            services.AddScoped<ICuotaSocioService, CuotaSocioService> ();
+            services.AddScoped<IVoluntarioAdministradorService, VoluntarioAdministradorService>();
+            services.AddScoped<IVoluntarioSanitarioService, VoluntarioSanitarioService>();
+
             return services;
         }
     }

@@ -34,10 +34,12 @@ namespace Services.Services
             return result;
         }
 
-       
-        public async Task<int> Delete(int Id)
+
+        public async Task<int> Delete(int usuarioDni, string rolId)
         {
-            return await Task.Run(() => _context.Database.ExecuteSqlInterpolatedAsync($"SP_Eliminar_UsuarioRol {Id}"));
+            return await _context.Database.ExecuteSqlRawAsync("exec SP_Eliminar_UsuarioRol @EsUsuarioDni, @EsRolId",
+                new SqlParameter("@EsUsuarioDni", usuarioDni),
+                new SqlParameter("@EsRolId", rolId));
         }
 
         public async Task<List<UsuarioRol>> Get()
