@@ -15,7 +15,11 @@ builder.Services.AddServices(builder.Configuration);
 //    options.UseSqlServer("Server=DAVID\\SQLEXPRESS;Database=ACNUR;Trusted_Connection=True;TrustServerCertificate=True");
 //});
 // Add services to the container.
-
+builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
+    policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    }));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -29,7 +33,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("NgOrigins");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

@@ -68,3 +68,17 @@ C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\DataAccess\obj\Debug\net6.0
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.pdb
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\bin\Debug\net6.0\DataAccess.deps.json
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\bin\Debug\net6.0\DataAccess.runtimeconfig.json
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\bin\Debug\net6.0\DataAccess.dll
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\bin\Debug\net6.0\DataAccess.pdb
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfoInputs.cache
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.AssemblyInfo.cs
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.dll
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\refint\DataAccess.dll
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.pdb
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
+C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
