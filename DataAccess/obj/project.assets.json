@@ -2891,19 +2891,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cabre\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cabre\\OneDrive\\Documentos\\Material_IISemestre2023\\Admin_BaseDatos\\ACNUR-FRONTEND\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "C:\\Users\\cabre\\OneDrive\\Documentos\\Material_IISemestre2023\\Admin_BaseDatos\\ACNUR-FRONTEND\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
-      "packagesPath": "C:\\Users\\cabre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cabre\\OneDrive\\Documentos\\Material_IISemestre2023\\Admin_BaseDatos\\ACNUR-FRONTEND\\SistemaACNUR_API\\DataAccess\\obj\\",
+      "projectPath": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cabre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2956,7 +2956,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

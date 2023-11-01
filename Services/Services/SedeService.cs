@@ -42,9 +42,19 @@ namespace Services.Services
 
         public async Task<List<Sede>> Get()
         {
-            return await _context.Sedes
-               .FromSqlRaw<Sede>("SP_Listar_Sedes")
-               .ToListAsync();
+            var sedes = await _context.Sedes
+                .FromSqlRaw("exec SP_Listar_Sedes")
+                .ToListAsync();
+
+            foreach (var sede in sedes)
+            {
+                _context.Entry(sede)
+                    .Reference(d => d.Direccion)
+                    .Load();
+            }
+
+
+            return sedes;
         }
 
         //Falta el PA
