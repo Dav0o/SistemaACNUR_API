@@ -79,7 +79,7 @@ public partial class AcnurContext : DbContext
             entity.Property(e => e.NombreAlimento)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PesoKg).HasColumnName("Peso_KG");
+            entity.Property(e => e.Peso).HasColumnName("Peso");
         });
 
         modelBuilder.Entity<Almacen>(entity =>

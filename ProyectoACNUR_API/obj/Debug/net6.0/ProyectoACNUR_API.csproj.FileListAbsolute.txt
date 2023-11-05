@@ -543,3 +543,4 @@ C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR
 C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\ProyectoACNUR_API\obj\Debug\net6.0\ProyectoACNUR_API.pdb
 C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\ProyectoACNUR_API\obj\Debug\net6.0\ProyectoACNUR_API.genruntimeconfig.cache
 C:\Users\cabre\OneDrive\Documentos\Material_IISemestre2023\Admin_BaseDatos\ACNUR-FRONTEND\SistemaACNUR_API\ProyectoACNUR_API\obj\Debug\net6.0\ref\ProyectoACNUR_API.dll
+C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\ProyectoACNUR_API\obj\Debug\net6.0\ProyectoACNUR_API.MvcApplicationPartsAssemblyInfo.cs
