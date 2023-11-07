@@ -11,7 +11,9 @@
 
             public DateTime FechaVencimiento { get; set; }
 
-            public double PesoKg { get; set; }
+            public double Peso { get; set; }
+
+            public string Unidad { get; set; }
         }
         #endregion
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Desktop\\Api bd\\SistemaACNUR_API\\DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -67,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

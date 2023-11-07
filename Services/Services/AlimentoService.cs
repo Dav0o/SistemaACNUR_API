@@ -27,10 +27,11 @@ namespace Services.Services
             parameter.Add(new SqlParameter("@EsId_Alimento", alimento.IdAlimento));
             parameter.Add(new SqlParameter("@EsNombreAlimento", alimento.NombreAlimento));
             parameter.Add(new SqlParameter("@EsFechaVencimiento", alimento.FechaVencimiento));
-            parameter.Add(new SqlParameter("@EsPeso_KG", alimento.PesoKg));
+            parameter.Add(new SqlParameter("@EsPeso", alimento.Peso));
+            parameter.Add(new SqlParameter("@EsUnidad", alimento.Unidad));
 
             var result = await Task.Run(() => _context.Database
-           .ExecuteSqlRawAsync(@"exec SP_Insertar_Alimento @EsId_Alimento, @EsNombreAlimento, @EsFechaVencimiento, @EsPeso_KG",
+           .ExecuteSqlRawAsync(@"exec SP_Insertar_Alimento @EsId_Alimento, @EsNombreAlimento, @EsFechaVencimiento, @EsPeso, @EsUnidad",
                                parameter.ToArray()));
             return result;
         }
@@ -54,17 +55,18 @@ namespace Services.Services
             parameter.Add(new SqlParameter("@EsId_Alimento", alimento.IdAlimento));
             parameter.Add(new SqlParameter("@EsNombreAlimento", alimento.NombreAlimento));
             parameter.Add(new SqlParameter("@EsFechaVencimiento", alimento.FechaVencimiento));
-            parameter.Add(new SqlParameter("@EsPeso_KG", alimento.PesoKg));
+            parameter.Add(new SqlParameter("@EsPeso", alimento.Peso));
+            parameter.Add(new SqlParameter("@EsUnidad", alimento.Unidad));
 
             var result = await Task.Run(() => _context.Database
-           .ExecuteSqlRawAsync(@"exec SP_Actualizar_Alimento @EsId_Alimento, @EsNombreAlimento, @EsFechaVencimiento, @EsPeso_KG",
+           .ExecuteSqlRawAsync(@"exec SP_Actualizar_Alimento @EsId_Alimento, @EsNombreAlimento, @EsFechaVencimiento, @EsPeso, @EsUnidad",
                                parameter.ToArray()));
             return result;
         }
 
-        public async Task<IEnumerable<Alimento>> GetById(string Id)
+        public async Task<IEnumerable<Alimento>> GetById(string Id_Alimento)
         {
-            var param = new SqlParameter("@EsId_Alimento", Id);
+            var param = new SqlParameter("@EsId_Alimento", Id_Alimento);
 
             var productDetails = await Task.Run(() => _context.Alimentos
                             .FromSqlRaw(@"exec SP_Obtener_Alimento @EsId_Alimento", param).ToListAsync());
