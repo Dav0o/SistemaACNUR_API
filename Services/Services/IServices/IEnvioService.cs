@@ -11,7 +11,7 @@ namespace Services.Services.IServices
     public interface IEnvioService
     {
         public Task<List<Envio>> Get();
-        public Task<IEnumerable<Envio>> GetById(int Id);
+        public Task<Envio> GetById(int Id);
         public Task<int> Add(DtoEnvio envio);
         public Task<int> Update(DtoEnvio envio);
         public Task<int> Delete(int Id);

@@ -29,12 +29,12 @@ namespace ProyectoACNUR_API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IEnumerable<Envio>> GetById(int Id)
+        [HttpGet("{idEnvio}")]
+        public async Task<Envio> GetById(int idEnvio)
         {
             try
             {
-                var response = await _service.GetById(Id);
+                var response = await _service.GetById(idEnvio);
 
                 if (response == null)
                 {

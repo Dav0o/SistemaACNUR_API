@@ -50,13 +50,16 @@ namespace Services.Services
                .ToListAsync();
         }
 
-        public async Task<IEnumerable<Envio>> GetById(int Id)
+        public async Task<Envio> GetById(int Id)
         {
-            var param = new SqlParameter("@Es_Id_Envio", Id);
+            var param = await _context.Envios.FirstOrDefaultAsync(x => x.IdEnvio == Id);
 
-            var productDetails = await Task.Run(() => _context.Envios.FromSqlRaw(@"exec SP_Obtener_Envio", param).ToListAsync());
+            if (param == null)
+            {
+                return null;
+            }
 
-            return productDetails;
+            return param;
         }
 
         public async Task<int> Update(DtoEnvio envio)
