@@ -1,7 +1,11 @@
 ﻿using DataAccess.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Services.Services.IServices;
 using static Services.Extension.DtoMapping;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ProyectoACNUR_API.Controllers
 {
@@ -10,9 +14,9 @@ namespace ProyectoACNUR_API.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUsuarioService _service;
+        private readonly AcnurContext _service;
 
-        public UsuarioController(IUsuarioService service)
+        public UsuarioController(AcnurContext service)
         {
             _service = service;
         }
@@ -22,7 +26,7 @@ namespace ProyectoACNUR_API.Controllers
         {
             try
             {
-                return await _service.Get();
+                return await _service.Usuarios.ToListAsync();
             }
             catch
             {
@@ -30,69 +34,99 @@ namespace ProyectoACNUR_API.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IEnumerable<Usuario>> GetById(int DniUsuario)
+        [HttpGet("{DniUsuario}")]
+        public async Task<Usuario> GetById(int DniUsuario)
         {
-            try
-            {
-                var response = await _service.GetById(DniUsuario);
 
-                if (response == null)
-                {
-                    return null;
-                }
+            var user = await _service.Usuarios.FirstOrDefaultAsync(x => x.DniUsuario == DniUsuario);
 
-                return response;
-            }
-            catch
+
+            if (user == null)
             {
-                throw;
+                return null;
             }
+            return user;
         }
 
         [HttpPost]
         public async Task<IActionResult> Add(DtoUsuario request)
         {
+            Usuario newUser = new Usuario();
 
+            newUser.DniUsuario = request.DniUsuario;
+            newUser.NombreUsuario = request.NombreUsuario;
+            newUser.Apellido1 = request.Apellido1;
+            newUser.Apellido2 = request.Apellido2;
+            newUser.Correo = request.Correo;
 
-            try
-            {
-                var response = await _service.Add(request);
+            // Encriptar la contraseña con SHA-256
+            newUser.Clave = HashPassword(request.Clave);
 
-                return Ok(response);
-            }
-            catch
-            {
-                throw;
-            }
+            newUser.Telefono = request.Telefono;
+            newUser.Direccion = request.Direccion;
+            newUser.SedeId = request.SedeId;
+
+            _service.Add(newUser);
+            await _service.SaveChangesAsync();
+
+            return Ok(newUser);
         }
 
         [HttpPut]
         public async Task<IActionResult> Update(DtoUsuario request)
         {
+            Usuario newUser = new Usuario();
 
-            try
-            {
-                var result = await _service.Update(request);
-                return Ok(result);
-            }
-            catch
-            {
-                throw;
-            }
+            newUser.DniUsuario = request.DniUsuario;
+            newUser.NombreUsuario = request.NombreUsuario;
+            newUser.Apellido1 = request.Apellido1;
+            newUser.Apellido2 = request.Apellido2;
+            newUser.Correo = request.Correo;
+
+            // Encriptar la contraseña con SHA-256
+            newUser.Clave = HashPassword(request.Clave);
+
+            newUser.Telefono = request.Telefono;
+            newUser.Direccion = request.Direccion;
+            newUser.SedeId = request.SedeId;
+
+            _service.Usuarios.Attach(newUser);
+            _service.Entry(newUser).State = EntityState.Modified;
+            await _service.SaveChangesAsync();
+
+
+            return NoContent();
+
         }
 
         [HttpDelete]
-        public async Task<int> Delete(int DniUsuario)
+        public async Task<IActionResult> Delete(int DniUsuario)
         {
-            try
+            var user = await _service.Usuarios.FirstOrDefaultAsync(x => x.DniUsuario == DniUsuario);
+            if (user != null)
             {
-                var response = await _service.Delete(DniUsuario);
-                return response;
+                _service.Remove(user);
+                await _service.SaveChangesAsync();
+
+                return NoContent();
             }
-            catch
+            return NoContent();
+
+        }
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
             {
-                throw;
+                // Convertir la contraseña a bytes
+                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+
+                // Calcular el hash
+                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
+
+                // Convertir el hash a una cadena hexadecimal
+                string hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
+
+                return hashedPassword;
             }
         }
     }

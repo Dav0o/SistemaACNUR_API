@@ -11,9 +11,9 @@ public partial class Socio
 
     public int UsuarioDni { get; set; }
 
-    public int CuotaId { get; set; }
+    public int? CuotaId { get; set; }
 
-    public virtual Cuotum Cuota { get; set; } = null!;
+    public virtual Cuotum? Cuota { get; set; }
 
     public virtual ICollection<CuotaSocio> CuotaSocios { get; set; } = new List<CuotaSocio>();
 

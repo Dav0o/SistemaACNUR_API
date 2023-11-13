@@ -15,7 +15,7 @@ public partial class Usuario
 
     public string Correo { get; set; } = null!;
 
-    public byte[] Clave { get; set; } = null!;
+    public string Clave { get; set; } = null!;
 
     public int Telefono { get; set; }
 

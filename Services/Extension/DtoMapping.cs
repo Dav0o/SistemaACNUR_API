@@ -113,15 +113,15 @@
 
             public string Apellido2 { get; set; }
 
-            public string Correo { get; set; } 
+            public string Correo { get; set; }
 
-            public byte[] Clave { get; set; } 
+            public string Clave { get; set; }
 
             public int Telefono { get; set; }
 
-            public string Direccion { get; set; } 
+            public string Direccion { get; set; }
 
-            public string SedeId { get; set; } 
+            public string SedeId { get; set; }
         }
         #endregion
 
