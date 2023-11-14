@@ -45,14 +45,27 @@ namespace Services.Services
 
         public async Task<List<Envio>> Get()
         {
-            return await _context.Envios
+            var envios =  await _context.Envios
                .FromSqlRaw<Envio>("SP_Listar_Envios")
                .ToListAsync();
+
+            foreach (var envio in envios)
+            {
+                _context.Entry(envio)
+                    .Reference(d => d.UnidadMedida)
+                    .Load();
+            }
+
+            return envios;
         }
 
         public async Task<Envio> GetById(int Id)
         {
             var param = await _context.Envios.FirstOrDefaultAsync(x => x.IdEnvio == Id);
+
+            _context.Entry(param)
+                    .Reference(d => d.UnidadMedida)
+                    .Load();
 
             if (param == null)
             {

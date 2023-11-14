@@ -20,7 +20,9 @@ builder.Services.AddCors(options => options.AddPolicy(name: "NgOrigins",
     {
         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     }));
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
