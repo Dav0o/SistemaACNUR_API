@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DYudVj1gfybBAwKXhBJkiSn0/R2Kul1TiEUhN9VdqGTQGN8cW5hEzySlO5pLgy6pEMcdSEPSw2jlp8jw3CrqYw==",
+  "dgSpecHash": "FYmh0nK6SqF13e56xhwTmyf2nVb0Chlwyni6IInDh9LHKVrqzSeyx87yYzfs50JOcCOeCWa/+il9CKCx5Lbl8A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\Api final bd\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "C:\\Users\\Usuario\\Desktop\\ACNUR_Back\\SistemaACNUR_API\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

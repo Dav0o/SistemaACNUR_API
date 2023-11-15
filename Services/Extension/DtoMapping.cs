@@ -255,7 +255,62 @@
 
         }
         #endregion
-       
+
+        #region EnvioAlimento
+        public struct DtoEnvioAlimento
+        {
+            public int IdEnvioAlimento { get; set; }
+
+            public string AlimentoId { get; set; }
+
+            public int CantidadAlimento { get; set; }
+
+            public int EnvioId { get; set; }
+
+
+        }
+        #endregion
+
+        #region EnvioMedicina
+        public struct DtoEnvioMedicina
+        {
+            public int IdEnvioMedicina { get; set; }
+
+            public string MedicinaId { get; set; } 
+
+            public int CantidadMedicina { get; set; }
+
+            public int EnvioId { get; set; }
+
+
+        }
+        #endregion
+
+        #region EnvioHumanitario
+        public struct DtoEnvioHumanitario
+        {
+           public int IdEnvioHumanitario { get; set; }
+
+            public int VoluntarioSanitarioId { get; set; }
+
+            public int EnvioId { get; set; }
+
+        }
+        #endregion
+
+        #region EnvioSede
+        public struct DtoEnvioSede
+        {
+            public int IdEnvioSede { get; set; }
+
+            public string SedeId { get; set; }
+
+            public int EnvioId { get; set; }
+
+
+        }
+        #endregion
+
     }
 
 

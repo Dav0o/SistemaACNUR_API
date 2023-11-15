@@ -34,6 +34,10 @@ namespace Services
             services.AddScoped<ICuotaSocioService, CuotaSocioService> ();
             services.AddScoped<IVoluntarioAdministradorService, VoluntarioAdministradorService>();
             services.AddScoped<IVoluntarioSanitarioService, VoluntarioSanitarioService>();
+            services.AddScoped<IEnvioAlimentoService, EnvioAlimentoService>();
+            services.AddScoped<IEnvioMedicinaService, EnvioMedicinaService>();
+            services.AddScoped<IEnvioHumanitarioService, EnvioHumanitarioService>();
+            services.AddScoped<IEnvioSedeService, EnvioSedeService>();
 
             return services;
         }
