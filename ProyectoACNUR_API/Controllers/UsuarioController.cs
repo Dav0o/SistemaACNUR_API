@@ -98,6 +98,28 @@ namespace ProyectoACNUR_API.Controllers
             return NoContent();
 
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(DtoLogin request)
+        {
+            var user = await _service.Usuarios.SingleOrDefaultAsync(x => x.Correo == request.Correo);
+
+            if (user == null)
+            {
+
+                return BadRequest("Correo electrónico no válido");
+            }
+
+
+            var isPasswordValid = VerifyPassword(request.Clave, user.Clave);
+
+            if (!isPasswordValid)
+            {
+
+                return BadRequest("Contraseña incorrecta");
+            }
+
+            return Ok("Inicio de sesión con éxito");
+        }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int DniUsuario)
@@ -113,21 +135,19 @@ namespace ProyectoACNUR_API.Controllers
             return NoContent();
 
         }
-        private string HashPassword(string password)
+        private static string HashPassword(string password)
         {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                // Convertir la contraseña a bytes
-                byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+            // Generar un hash BCrypt
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
 
-                // Calcular el hash
-                byte[] hashBytes = sha256.ComputeHash(passwordBytes);
-
-                // Convertir el hash a una cadena hexadecimal
-                string hashedPassword = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
-
-                return hashedPassword;
-            }
+            return hashedPassword;
         }
+        private static bool VerifyPassword(string inputPassword, string storedHash)
+        {
+            
+            return BCrypt.Net.BCrypt.Verify(inputPassword, storedHash);
+        }
+
+        
     }
 }

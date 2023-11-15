@@ -123,6 +123,12 @@
 
             public string SedeId { get; set; }
         }
+        public struct DtoLogin
+        {
+            public string Correo { get; set; }
+
+            public string Clave { get; set; }
+        }
         #endregion
 
         #region Direccion

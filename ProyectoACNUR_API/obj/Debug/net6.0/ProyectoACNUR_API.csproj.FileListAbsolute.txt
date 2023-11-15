@@ -643,3 +643,4 @@ C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\ProyectoACNUR_API\bin\Debug
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\ProyectoACNUR_API\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\ProyectoACNUR_API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\Usuario\Desktop\ACNUR_Back\SistemaACNUR_API\ProyectoACNUR_API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\Usuario\Desktop\Api final bd\SistemaACNUR_API\ProyectoACNUR_API\bin\Debug\net6.0\BCrypt.Net.dll
