@@ -26,7 +26,7 @@ namespace ProyectoACNUR_API.Controllers
         {
             try
             {
-                return await _service.Usuarios.ToListAsync();
+                return await _service.Usuarios.Include("Socios").Include("UsuarioRols").Include("VoluntarioAdministradors").Include("VoluntarioSanitarios").ToListAsync();
             }
             catch
             {
