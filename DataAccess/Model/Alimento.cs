@@ -11,7 +11,9 @@ public partial class Alimento
 
     public DateTime FechaVencimiento { get; set; }
 
-    public double PesoKg { get; set; }
+    public double Peso { get; set; }
+
+    public string Unidad { get; set; } = null!;
 
     public virtual ICollection<EnvioAlimento> EnvioAlimentos { get; set; } = new List<EnvioAlimento>();
 

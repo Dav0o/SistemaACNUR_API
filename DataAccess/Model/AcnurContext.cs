@@ -45,6 +45,8 @@ public partial class AcnurContext : DbContext
 
     public virtual DbSet<ProfesionVoluntario> ProfesionVoluntarios { get; set; }
 
+    public virtual DbSet<RegistroAccione> RegistroAcciones { get; set; }
+
     public virtual DbSet<Rol> Rols { get; set; }
 
     public virtual DbSet<Sede> Sedes { get; set; }
@@ -61,14 +63,19 @@ public partial class AcnurContext : DbContext
 
     public virtual DbSet<VoluntarioSanitario> VoluntarioSanitarios { get; set; }
 
-   
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Alimento>(entity =>
         {
-            entity.HasKey(e => e.IdAlimento).HasName("PK__Alimento__22E89F9D8A8D3C4C");
+            entity.HasKey(e => e.IdAlimento).HasName("PK__Alimento__22E89F9D83CF17B2");
 
-            entity.ToTable("Alimento");
+            entity.ToTable("Alimento", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Alimento");
+                    tb.HasTrigger("Trigger_Eliminacion_Alimento");
+                    tb.HasTrigger("Trigger_Insercion_Alimento");
+                });
 
             entity.Property(e => e.IdAlimento)
                 .HasMaxLength(12)
@@ -78,14 +85,21 @@ public partial class AcnurContext : DbContext
             entity.Property(e => e.NombreAlimento)
                 .HasMaxLength(50)
                 .IsUnicode(false);
-            entity.Property(e => e.PesoKg).HasColumnName("Peso_KG");
+            entity.Property(e => e.Unidad)
+                .HasMaxLength(20)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<Almacen>(entity =>
         {
-            entity.HasKey(e => e.IdAlmacen).HasName("PK__Almacen__1E9C729E9926D8C3");
+            entity.HasKey(e => e.IdAlmacen).HasName("PK__Almacen__1E9C729E649D2327");
 
-            entity.ToTable("Almacen");
+            entity.ToTable("Almacen", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Almacen");
+                    tb.HasTrigger("Trigger_Eliminacion_Almacen");
+                    tb.HasTrigger("Trigger_Insercion_Almacen");
+                });
 
             entity.Property(e => e.IdAlmacen)
                 .HasMaxLength(8)
@@ -110,7 +124,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<CuotaSocio>(entity =>
         {
-            entity.HasKey(e => e.IdCuotaSocio).HasName("PK__Cuota_So__402DA5C021FC7073");
+            entity.HasKey(e => e.IdCuotaSocio).HasName("PK__Cuota_So__402DA5C0711B6CE5");
 
             entity.ToTable("Cuota_Socio");
 
@@ -134,7 +148,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Cuotum>(entity =>
         {
-            entity.HasKey(e => e.IdCuota).HasName("PK__Cuota__AE25C03F07F46F1E");
+            entity.HasKey(e => e.IdCuota).HasName("PK__Cuota__AE25C03F196FE531");
+
+            entity.ToTable(tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Cuota");
+                    tb.HasTrigger("Trigger_Eliminacion_Cuota");
+                    tb.HasTrigger("Trigger_Insercion_Cuota");
+                });
 
             entity.Property(e => e.IdCuota)
                 .ValueGeneratedNever()
@@ -150,9 +171,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Direccion>(entity =>
         {
-            entity.HasKey(e => e.IdDireccion).HasName("PK__Direccio__535FD61128496B8A");
+            entity.HasKey(e => e.IdDireccion).HasName("PK__Direccio__535FD6115CA1999F");
 
-            entity.ToTable("Direccion");
+            entity.ToTable("Direccion", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Direccion");
+                    tb.HasTrigger("Trigger_Eliminacion_Direccion");
+                    tb.HasTrigger("Trigger_Insercion_Direccion");
+                });
 
             entity.Property(e => e.IdDireccion)
                 .ValueGeneratedNever()
@@ -174,9 +200,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Envio>(entity =>
         {
-            entity.HasKey(e => e.IdEnvio).HasName("PK__Envio__3A838833653BDE61");
+            entity.HasKey(e => e.IdEnvio).HasName("PK__Envio__3A838833A31F4643");
 
-            entity.ToTable("Envio");
+            entity.ToTable("Envio", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Envio");
+                    tb.HasTrigger("Trigger_Eliminacion_Envio");
+                    tb.HasTrigger("Trigger_Insercion_Envio");
+                });
 
             entity.Property(e => e.IdEnvio).HasColumnName("Id_Envio");
             entity.Property(e => e.Destino)
@@ -202,9 +233,15 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<EnvioAlimento>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioAlimento).HasName("PK__Envio_Al__6956378629975D2A");
+            entity.HasKey(e => e.IdEnvioAlimento).HasName("PK__Envio_Al__69563786A57E620E");
 
-            entity.ToTable("Envio_Alimento");
+            entity.ToTable("Envio_Alimento", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Envio_Alimento");
+                    tb.HasTrigger("Trigger_Actualizar_InventarioAlimento");
+                    tb.HasTrigger("Trigger_Eliminacion_Envio_Alimento");
+                    tb.HasTrigger("Trigger_Insercion_Envio_Alimento");
+                });
 
             entity.Property(e => e.IdEnvioAlimento).HasColumnName("Id_Envio_Alimento");
             entity.Property(e => e.AlimentoId)
@@ -227,9 +264,15 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<EnvioHumanitario>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioHumanitario).HasName("PK__Envio_Hu__D0CE396926A96BE9");
+            entity.HasKey(e => e.IdEnvioHumanitario).HasName("PK__Envio_Hu__D0CE39694B8EF4E1");
 
-            entity.ToTable("Envio_Humanitario");
+            entity.ToTable("Envio_Humanitario", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizacion_Envio_Humanitario");
+                    tb.HasTrigger("Trigger_CambiarEstadoVoluntario");
+                    tb.HasTrigger("Trigger_Eliminacion_Envio_Humanitario");
+                    tb.HasTrigger("Trigger_Insercion_Envio_Humanitario");
+                });
 
             entity.Property(e => e.IdEnvioHumanitario).HasColumnName("Id_Envio_Humanitario");
             entity.Property(e => e.EnvioId).HasColumnName("Envio_Id");
@@ -248,9 +291,15 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<EnvioMedicina>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioMedicina).HasName("PK__Envio_Me__8C15B7794E1C3AF5");
+            entity.HasKey(e => e.IdEnvioMedicina).HasName("PK__Envio_Me__8C15B779E52C9156");
 
-            entity.ToTable("Envio_Medicina");
+            entity.ToTable("Envio_Medicina", tb =>
+                {
+                    tb.HasTrigger("Trigger_Actualizar_InventarioMedicina");
+                    tb.HasTrigger("Trigger_Delete_Envio_Medicina");
+                    tb.HasTrigger("Trigger_Insert_Envio_Medicina");
+                    tb.HasTrigger("Trigger_Update_Envio_Medicina");
+                });
 
             entity.Property(e => e.IdEnvioMedicina).HasColumnName("Id_Envio_Medicina");
             entity.Property(e => e.CantidadMedicina).HasColumnName("Cantidad_Medicina");
@@ -273,7 +322,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<EnvioSede>(entity =>
         {
-            entity.HasKey(e => e.IdEnvioSede).HasName("PK__Envio_Se__E4F154D616B2784D");
+            entity.HasKey(e => e.IdEnvioSede).HasName("PK__Envio_Se__E4F154D64EDF1516");
 
             entity.ToTable("Envio_Sede");
 
@@ -297,9 +346,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<InventarioAlimento>(entity =>
         {
-            entity.HasKey(e => e.IdInventarioAlimento).HasName("PK__Inventar__298C093315191A1D");
+            entity.HasKey(e => e.IdInventarioAlimento).HasName("PK__Inventar__298C0933AD6773AE");
 
-            entity.ToTable("Inventario_Alimento");
+            entity.ToTable("Inventario_Alimento", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Inventario_Alimento");
+                    tb.HasTrigger("Trigger_Insert_Inventario_Alimento");
+                    tb.HasTrigger("Trigger_Update_Inventario_Alimento");
+                });
 
             entity.Property(e => e.IdInventarioAlimento).HasColumnName("Id_Inventario_Alimento");
             entity.Property(e => e.AlimentoId)
@@ -324,9 +378,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<InventarioMedicina>(entity =>
         {
-            entity.HasKey(e => e.IdInventarioMedicina).HasName("PK__Inventar__49248191843C1DD9");
+            entity.HasKey(e => e.IdInventarioMedicina).HasName("PK__Inventar__49248191F05E2A65");
 
-            entity.ToTable("Inventario_Medicina");
+            entity.ToTable("Inventario_Medicina", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Inventario_Medicina");
+                    tb.HasTrigger("Trigger_Insert_Inventario_Medicina");
+                    tb.HasTrigger("Trigger_Update_Inventario_Medicina");
+                });
 
             entity.Property(e => e.IdInventarioMedicina).HasColumnName("Id_Inventario_Medicina");
             entity.Property(e => e.AlmacenId)
@@ -351,9 +410,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Medicina>(entity =>
         {
-            entity.HasKey(e => e.IdMedicina).HasName("PK__Medicina__D4176A77BEC69B75");
+            entity.HasKey(e => e.IdMedicina).HasName("PK__Medicina__D4176A77691A0A54");
 
-            entity.ToTable("Medicina");
+            entity.ToTable("Medicina", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Medicina");
+                    tb.HasTrigger("Trigger_Insert_Medicina");
+                    tb.HasTrigger("Trigger_Update_Medicina");
+                });
 
             entity.Property(e => e.IdMedicina)
                 .HasMaxLength(12)
@@ -367,7 +431,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Profesion>(entity =>
         {
-            entity.HasKey(e => e.IdProfesion).HasName("PK__Profesio__1632DD8AB9B1A152");
+            entity.HasKey(e => e.IdProfesion).HasName("PK__Profesio__1632DD8A8D7BBCB5");
 
             entity.ToTable("Profesion");
 
@@ -382,7 +446,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<ProfesionVoluntario>(entity =>
         {
-            entity.HasKey(e => e.IdProfesionVoluntario).HasName("PK__Profesio__AA37818B79F338AD");
+            entity.HasKey(e => e.IdProfesionVoluntario).HasName("PK__Profesio__AA37818BADA5BF1B");
 
             entity.ToTable("Profesion_Voluntario");
 
@@ -403,9 +467,32 @@ public partial class AcnurContext : DbContext
                 .HasConstraintName("FK__Profesion__Volun__628FA481");
         });
 
+        modelBuilder.Entity<RegistroAccione>(entity =>
+        {
+            entity.HasKey(e => e.IdAuditoria).HasName("PK__Registro__7FD13FA0EF4EC885");
+
+            entity.Property(e => e.Accion)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Campo)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.Pc)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PC");
+            entity.Property(e => e.Tabla)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Usuario)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<Rol>(entity =>
         {
-            entity.HasKey(e => e.IdRol).HasName("PK__Rol__55932E86447B37C4");
+            entity.HasKey(e => e.IdRol).HasName("PK__Rol__55932E86648AADA3");
 
             entity.ToTable("Rol");
 
@@ -423,7 +510,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Sede>(entity =>
         {
-            entity.HasKey(e => e.IdSede).HasName("PK__Sede__A3F9F16A4F1F0CC9");
+            entity.HasKey(e => e.IdSede).HasName("PK__Sede__A3F9F16AC1672F6D");
 
             entity.ToTable("Sede");
 
@@ -440,9 +527,15 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Socio>(entity =>
         {
-            entity.HasKey(e => e.IdSocio).HasName("PK__Socio__8CB151836F67FC2E");
+            entity.HasKey(e => e.IdSocio).HasName("PK__Socio__8CB15183BED05E24");
 
-            entity.ToTable("Socio");
+            entity.ToTable("Socio", tb =>
+                {
+                    tb.HasTrigger("ActualizarCuotaSocio");
+                    tb.HasTrigger("Trigger_Delete_Socio");
+                    tb.HasTrigger("Trigger_Insert_Socio");
+                    tb.HasTrigger("Trigger_Update_Socio");
+                });
 
             entity.Property(e => e.IdSocio)
                 .ValueGeneratedNever()
@@ -463,7 +556,7 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<UnidadMedidum>(entity =>
         {
-            entity.HasKey(e => e.IdUnidadMedida).HasName("PK__UnidadMe__5BD46EDD394E99A9");
+            entity.HasKey(e => e.IdUnidadMedida).HasName("PK__UnidadMe__5BD46EDDDD02CC94");
 
             entity.Property(e => e.IdUnidadMedida)
                 .HasMaxLength(6)
@@ -476,9 +569,14 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.DniUsuario).HasName("PK__Usuario__25A9C8D872435DDF");
+            entity.HasKey(e => e.DniUsuario).HasName("PK__Usuario__25A9C8D854697335");
 
-            entity.ToTable("Usuario");
+            entity.ToTable("Usuario", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Usuario");
+                    tb.HasTrigger("Trigger_Insert_Usuario");
+                    tb.HasTrigger("Trigger_Update_Usuario");
+                });
 
             entity.Property(e => e.DniUsuario)
                 .ValueGeneratedNever()
@@ -514,9 +612,13 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<UsuarioRol>(entity =>
         {
-            entity.HasKey(e => e.IdUsuarioRol).HasName("PK__Usuario___1BAC97A7627A6745");
+            entity.HasKey(e => e.IdUsuarioRol).HasName("PK__Usuario___1BAC97A75D4FD21B");
 
-            entity.ToTable("Usuario_Rol");
+            entity.ToTable("Usuario_Rol", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Usuario_Rol");
+                    tb.HasTrigger("Trigger_Insert_Usuario_Rol");
+                });
 
             entity.Property(e => e.IdUsuarioRol).HasColumnName("Id_Usuario_Rol");
             entity.Property(e => e.RolId)
@@ -538,9 +640,13 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<VoluntarioAdministrador>(entity =>
         {
-            entity.HasKey(e => e.IdVoluntarioAdministrador).HasName("PK__Voluntar__41D71E794DFA8794");
+            entity.HasKey(e => e.IdVoluntarioAdministrador).HasName("PK__Voluntar__41D71E7927D79BDA");
 
-            entity.ToTable("Voluntario_Administrador");
+            entity.ToTable("Voluntario_Administrador", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Voluntario_Administrador");
+                    tb.HasTrigger("Trigger_Insert_Voluntario_Administrador");
+                });
 
             entity.Property(e => e.IdVoluntarioAdministrador)
                 .ValueGeneratedNever()
@@ -555,9 +661,13 @@ public partial class AcnurContext : DbContext
 
         modelBuilder.Entity<VoluntarioSanitario>(entity =>
         {
-            entity.HasKey(e => e.IdVoluntarioSanitario).HasName("PK__Voluntar__380A198C198711C2");
+            entity.HasKey(e => e.IdVoluntarioSanitario).HasName("PK__Voluntar__380A198C9B076CD6");
 
-            entity.ToTable("Voluntario_Sanitario");
+            entity.ToTable("Voluntario_Sanitario", tb =>
+                {
+                    tb.HasTrigger("Trigger_Delete_Voluntario_Sanitario");
+                    tb.HasTrigger("Trigger_Insert_Voluntario_Sanitario");
+                });
 
             entity.Property(e => e.IdVoluntarioSanitario)
                 .ValueGeneratedNever()

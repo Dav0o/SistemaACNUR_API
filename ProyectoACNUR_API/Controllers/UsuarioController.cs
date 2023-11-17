@@ -38,7 +38,7 @@ namespace ProyectoACNUR_API.Controllers
         public async Task<Usuario> GetById(int DniUsuario)
         {
 
-            var user = await _service.Usuarios.FirstOrDefaultAsync(x => x.DniUsuario == DniUsuario);
+            var user = await _service.Usuarios.Include("Socios").Include("UsuarioRols").Include("VoluntarioAdministradors").Include("VoluntarioSanitarios").FirstOrDefaultAsync(x => x.DniUsuario == DniUsuario);
 
 
             if (user == null)
